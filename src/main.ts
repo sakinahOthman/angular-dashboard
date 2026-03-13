@@ -1,10 +1,10 @@
 /*
- *  Protractor support is deprecated in Angular.
- *  Protractor is used in this example for compatibility with Angular documentation tools.
+ *  main.ts; Entry point for the Angular application.
  */
-import {bootstrapApplication, provideProtractorTestingSupport} from '@angular/platform-browser';
+import {bootstrapApplication} from '@angular/platform-browser';
 import {App} from './app/app';
+import {appConfig} from './app/app.config';
 
-bootstrapApplication(App, {providers: [provideProtractorTestingSupport()]}).catch((err) =>
+bootstrapApplication(App, {providers: [...appConfig.providers]}).catch((err) =>
   console.error(err),
 );
