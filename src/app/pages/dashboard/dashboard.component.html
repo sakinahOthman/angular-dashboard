@@ -1,9 +1,41 @@
 <app-topbar></app-topbar>
 
 <div class="dashboard-layout">
-	<app-sidebar></app-sidebar>
-	<div class="dashboard-content">
-		<h2>Welcome to the dashboard</h2>
-		<p>This is the main content area.</p>
-	</div>
+  <app-sidebar></app-sidebar>
+  <div class="dashboard-content">
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon">💰</div>
+        <h3>Total Sales</h3>
+        <p class="metric-value">$45,230</p>
+        <p class="metric-change positive">+12% from last month</p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">👥</div>
+        <h3>Total Users</h3>
+        <p class="metric-value">1,234</p>
+        <p class="metric-change positive">+8% from last month</p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">📦</div>
+        <h3>Active Orders</h3>
+        <p class="metric-value">89</p>
+        <p class="metric-change negative">-3% from last month</p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">📈</div>
+        <h3>Monthly Revenue</h3>
+        <p class="metric-value">$15,670</p>
+        <p class="metric-change positive">+15% from last month</p>
+      </div>
+    </div>
+
+    <div class="dashboard-main">
+      <p>Welcome to your dashboard! Here you can monitor key metrics and manage your business.</p>
+    </div>
+  </div>
 </div>

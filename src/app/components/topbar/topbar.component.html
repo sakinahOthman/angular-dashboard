@@ -1,3 +1,33 @@
 <header class="topbar">
-  <h1>My Dashboard</h1>
+  <div class="topbar-left">
+    <h1>Angular Dashboard</h1>
+  </div>
+
+  <div class="topbar-right">
+    <button class="topbar-btn" routerLink="/profile">
+      <mat-icon>person</mat-icon>
+    </button>
+    <div class="notification-container">
+      <button class="topbar-btn notification-btn">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <div class="notification-dropdown">
+        <div class="notification-item">
+          <p>New order received</p>
+          <small>2 minutes ago</small>
+        </div>
+        <div class="notification-item">
+          <p>Payment processed</p>
+          <small>1 hour ago</small>
+        </div>
+        <div class="notification-item">
+          <p>System maintenance scheduled</p>
+          <small>3 hours ago</small>
+        </div>
+      </div>
+    </div>
+    <button class="topbar-btn logout-btn" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </header>

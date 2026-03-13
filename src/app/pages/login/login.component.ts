@@ -3,17 +3,20 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  imports: [ FormsModule, CommonModule]
+  styleUrls: ['./login.component.scss'],
+  imports: [ FormsModule, CommonModule, MatIconModule]
 })
 export class LoginComponent {
 
   username = '';
   password = '';
   error = '';
+  showPassword = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -27,6 +30,22 @@ export class LoginComponent {
       this.error = 'Invalid credentials';
     }
     
+  }
+
+  googleSignIn() {
+    // Implement Google OAuth login
+    console.log('Google sign-in clicked');
+    // TODO: Integrate with Google OAuth
+  }
+
+  appleSignIn() {
+    // Implement Apple Sign-In
+    console.log('Apple sign-in clicked');
+    // TODO: Integrate with Apple Sign-In
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }

@@ -1,29 +1,46 @@
-<div class="login-container">
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-header">
+      <img src="assets/so-logo.GIF" alt="Company Logo" class="logo">
+      <h1>Welcome Back</h1>
+    </div>
 
-  <h2>Login</h2>
+    <form class="login-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter your username"
+          [(ngModel)]="username"
+          name="username"
+          required
+        />
+      </div>
 
-  <form (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input-container">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+          <button type="button" class="toggle-password" (click)="togglePassword()" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+      </div>
 
-    <input
-      type="text"
-      placeholder="Username"
-      [(ngModel)]="username"
-      name="username"
-      required
-    />
+      <button type="submit" class="login-btn">Sign In</button>
+    </form>
 
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="password"
-      name="password"
-      required
-    />
-
-    <button type="submit">Login</button>
-
-  </form>
-
-  <p style="color:red" *ngIf="error">{{ error }}</p>
-
+    <div class="login-footer">
+      <p *ngIf="error" class="error-message">{{ error }}</p>
+      <p>Forgot your password? <a href="#">Reset here</a></p>
+    </div>
+  </div>
 </div>
