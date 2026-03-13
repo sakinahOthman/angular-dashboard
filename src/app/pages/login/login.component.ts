@@ -32,18 +32,6 @@ export class LoginComponent {
     
   }
 
-  googleSignIn() {
-    // Implement Google OAuth login
-    console.log('Google sign-in clicked');
-    // TODO: Integrate with Google OAuth
-  }
-
-  appleSignIn() {
-    // Implement Apple Sign-In
-    console.log('Apple sign-in clicked');
-    // TODO: Integrate with Apple Sign-In
-  }
-
   togglePassword() {
     this.showPassword = !this.showPassword;
   }

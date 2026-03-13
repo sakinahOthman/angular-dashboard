@@ -31,11 +31,6 @@
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-.metric-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
 .metric-card h3 {
   margin: 0.5rem 0;
   color: #5E6C5B;
@@ -64,10 +59,38 @@
   color: #dc3545;
 }
 
-.dashboard-main {
+.chart-section {
   margin-top: 2rem;
   padding: 1.5rem;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section h3 {
+  margin: 0 0 1rem 0;
+  color: #5E6C5B;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.chart-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.chart-item {
+  flex: 1;
+}
+
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

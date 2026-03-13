@@ -6,36 +6,46 @@
 
     <div class="metrics-grid">
       <div class="metric-card">
-        <div class="metric-icon">💰</div>
-        <h3>Total Sales</h3>
+        <h3>Total Revenue</h3>
         <p class="metric-value">$45,230</p>
         <p class="metric-change positive">+12% from last month</p>
       </div>
 
       <div class="metric-card">
-        <div class="metric-icon">👥</div>
-        <h3>Total Users</h3>
+        <h3>Active Users</h3>
         <p class="metric-value">1,234</p>
         <p class="metric-change positive">+8% from last month</p>
       </div>
 
       <div class="metric-card">
-        <div class="metric-icon">📦</div>
-        <h3>Active Orders</h3>
+        <h3>Total Orders</h3>
         <p class="metric-value">89</p>
         <p class="metric-change negative">-3% from last month</p>
       </div>
 
       <div class="metric-card">
-        <div class="metric-icon">📈</div>
-        <h3>Monthly Revenue</h3>
-        <p class="metric-value">$15,670</p>
+        <h3>New Customers</h3>
+        <p class="metric-value">123</p>
         <p class="metric-change positive">+15% from last month</p>
       </div>
     </div>
 
-    <div class="dashboard-main">
-      <p>Welcome to your dashboard! Here you can monitor key metrics and manage your business.</p>
+    <div class="chart-section">
+      <div class="chart-row">
+        <div class="chart-item">
+          <h3>Sales Trend</h3>
+          <div class="chart-container">
+            <canvas #chartCanvas></canvas>
+          </div>
+        </div>
+        <div class="chart-item">
+          <h3>Revenue Distribution</h3>
+          <div class="chart-container pie-chart-container">
+            <canvas #pieChartCanvas></canvas>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
