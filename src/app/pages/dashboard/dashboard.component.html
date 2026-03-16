@@ -1,7 +1,7 @@
-<app-topbar></app-topbar>
+<app-topbar (toggleSidebar)="toggleSidebar()"></app-topbar>
 
 <div class="dashboard-layout">
-  <app-sidebar></app-sidebar>
+  <app-sidebar *ngIf="sidebarOpen"></app-sidebar>
   <div class="dashboard-content">
 
     <div class="metrics-grid">

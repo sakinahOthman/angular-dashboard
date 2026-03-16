@@ -16,11 +16,17 @@ export class DashboardComponent implements AfterViewInit {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef;
   @ViewChild('pieChartCanvas') pieChartCanvas!: ElementRef;
 
+  sidebarOpen = false;
+
   username = '';
   password = '';
   error = '';
 
   constructor(private router: Router) {}
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 
   ngAfterViewInit() {
     // Line Chart

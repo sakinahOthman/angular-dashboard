@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from 'src/app/services/auth.service';
-
 @Component({
   selector: 'app-topbar',
   standalone: true,
@@ -11,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./topbar.component.scss'],
 })
 export class Topbar {
+  @Output() toggleSidebar = new EventEmitter<void>();
 
   constructor(private authService: AuthService, private router: Router) {}
 

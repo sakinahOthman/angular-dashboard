@@ -1,5 +1,6 @@
 .sidebar {
   width: 200px;
+  height: 100%;
   background: #ffffff;
   padding: 1rem;
   border-right: 1px solid rgba(0, 0, 0, 0.08);
@@ -12,6 +13,10 @@
 
 .sidebar li {
   margin: 0.5rem 0;
+}
+
+.sidebar li:hover {
+  background: rgba(31, 42, 53, 0.08);
 }
 
 .sidebar a {
