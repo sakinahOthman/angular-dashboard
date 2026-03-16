@@ -47,5 +47,37 @@
       </div>
     </div>
 
+    <div class="chart-section">
+
+    </div>
+
+    <div class="orders-section">
+      <h3>Latest Orders</h3>
+      <div class="table-container">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of latestOrders">
+              <td>{{ order.id }}</td>
+              <td>{{ order.customer }}</td>
+              <td>{{ order.date }}</td>
+              <td>${{ order.amount }}</td>
+              <td>
+                <span class="status" [ngClass]="order.status.toLowerCase()">{{ order.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </div>

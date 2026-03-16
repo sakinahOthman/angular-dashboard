@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
-$custom-primary: mat.$green-palette;
-$custom-tertiary: mat.$yellow-palette;
+$custom-primary: mat.$m2-blue-grey-palette;
+$custom-tertiary: mat.$m2-grey-palette;
 
 html {
   height: 100%;
@@ -42,10 +42,10 @@ body {
   font-family: 'Be Vietnam Pro', sans-serif;
 }
 :root {
-  --primary-color: #5E6C5B;
-  --secondary-color: #E4E2DD;
-  --accent-color: #e8e7fa;
-  --shadow-color: #E8E8E8;
+  --primary-color: #1F2A35;
+  --secondary-color: #ffffff;
+  --accent-color: #f4f6f8;
+  --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
 button.primary {

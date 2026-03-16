@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Sidebar } from 'src/app/components/sidebar/sidebar.component';
 import { Topbar } from 'src/app/components/topbar/topbar.component';
 import Chart from 'chart.js/auto';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [FormsModule, Sidebar, Topbar]
+  imports: [ FormsModule, Sidebar, Topbar, CommonModule ]
 })
 export class DashboardComponent implements AfterViewInit {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef;
@@ -60,12 +61,6 @@ export class DashboardComponent implements AfterViewInit {
           label: 'Sales ($)',
           fill: true,
           tension: 0.5,
-          borderColor: '#5E6C5B',
-          backgroundColor: 'rgba(94, 108, 91, 0.1)',
-          pointBackgroundColor: '#5E6C5B',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: '#5E6C5B'
         }
       ]
     };
@@ -99,18 +94,6 @@ export class DashboardComponent implements AfterViewInit {
     datasets: [
       {
         data: [45, 25, 20, 10], // Sample percentages
-        backgroundColor: [
-          '#5E6C5B',
-          '#8B9D83',
-          '#B5C4A7',
-          '#D4E2D4'
-        ],
-        hoverBackgroundColor: [
-          '#4a5548',
-          '#7a8a75',
-          '#a3b091',
-          '#c2d0c2'
-        ]
       }
     ]
   };
@@ -120,12 +103,17 @@ export class DashboardComponent implements AfterViewInit {
     plugins: {
       legend: {
         display: true,
-        position: 'bottom'
-      },
-      title: {
-        display: true,
-        text: 'Revenue Distribution'
+        position: 'right'
       }
     }
   };
+
+  // Latest Orders Data
+  public latestOrders = [
+    { id: '#12345', customer: 'John Doe', date: '2024-03-12', amount: 299.99, status: 'Completed' },
+    { id: '#12346', customer: 'Jane Smith', date: '2024-03-11', amount: 149.50, status: 'Processing' },
+    { id: '#12347', customer: 'Bob Johnson', date: '2024-03-10', amount: 89.99, status: 'Shipped' },
+    { id: '#12348', customer: 'Alice Brown', date: '2024-03-09', amount: 199.99, status: 'Completed' },
+    { id: '#12349', customer: 'Charlie Wilson', date: '2024-03-08', amount: 79.99, status: 'Pending' }
+  ];
 }

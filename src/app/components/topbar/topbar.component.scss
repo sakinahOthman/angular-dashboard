@@ -1,10 +1,16 @@
 .topbar {
-  background: #5E6C5B;
-  color: white;
-  padding: 1rem;
+  background: #ffffff;
+  color: #1F2A35;
+  padding: 0.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  max-width: 50px;
+  height: auto;
 }
 
 .topbar-left {
@@ -22,7 +28,7 @@
 .topbar-btn {
   background: none;
   border: none;
-  color: white;
+  color: #1F2A35;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
@@ -33,7 +39,7 @@
 }
 
 .topbar-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(31, 42, 53, 0.08);
 }
 
 .topbar-btn mat-icon {
@@ -50,8 +56,8 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: white;
-  color: #333;
+  background: #ffffff;
+  color: #1F2A35;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 300px;
@@ -85,10 +91,10 @@
 }
 
 .notification-item small {
-  color: #666;
+  color: #7f8c8d;
   font-size: 0.8rem;
 }
 
 .logout-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(31, 42, 53, 0.08);
 }
