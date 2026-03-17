@@ -1,28 +1,41 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from 'src/app/components/sidebar/sidebar.component';
 import { Topbar } from 'src/app/components/topbar/topbar.component';
 import Chart from 'chart.js/auto';
 import { CommonModule } from '@angular/common';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
+import { MatSortModule, MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [ FormsModule, Sidebar, Topbar, CommonModule ]
+  imports: [ FormsModule, Sidebar, Topbar, CommonModule, MatTableModule, MatPaginatorModule, MatSortModule ]
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements AfterViewInit, OnInit {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef;
   @ViewChild('pieChartCanvas') pieChartCanvas!: ElementRef;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   sidebarOpen = false;
+
+  dataSource!: MatTableDataSource<any>;
+
+  displayedColumns: string[] = ['id', 'customer', 'date', 'amount', 'status'];
 
   username = '';
   password = '';
   error = '';
 
   constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.latestOrders);
+  }
 
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
@@ -42,6 +55,10 @@ export class DashboardComponent implements AfterViewInit {
       data: this.pieChartData,
       options: this.pieChartOptions
     });
+
+    // Set up table pagination and sorting
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   getLastSixMonths(): string[] {
@@ -116,10 +133,10 @@ export class DashboardComponent implements AfterViewInit {
 
   // Latest Orders Data
   public latestOrders = [
-    { id: '#12345', customer: 'John Doe', date: '2024-03-12', amount: 299.99, status: 'Completed' },
-    { id: '#12346', customer: 'Jane Smith', date: '2024-03-11', amount: 149.50, status: 'Processing' },
-    { id: '#12347', customer: 'Bob Johnson', date: '2024-03-10', amount: 89.99, status: 'Shipped' },
-    { id: '#12348', customer: 'Alice Brown', date: '2024-03-09', amount: 199.99, status: 'Completed' },
-    { id: '#12349', customer: 'Charlie Wilson', date: '2024-03-08', amount: 79.99, status: 'Pending' }
+    { id: '#12345', customer: 'John Doe', product: 'Laptop', date: '2023-10-01', amount: 299.99, status: 'Completed' },
+    { id: '#12346', customer: 'Jane Smith', product: 'Phone', date: '2023-10-02', amount: 149.50, status: 'Processing' },
+    { id: '#12347', customer: 'Bob Johnson', product: 'Tablet', date: '2023-10-03', amount: 89.99, status: 'Shipped' },
+    { id: '#12348', customer: 'Alice Brown', product: 'Headphones', date: '2023-10-04', amount: 199.99, status: 'Completed' },
+    { id: '#12349', customer: 'Charlie Wilson', product: 'Smartwatch', date: '2023-10-05', amount: 79.99, status: 'Pending' }
   ];
 }

@@ -85,7 +85,7 @@
 
 .chart-container {
   position: relative;
-  height: 350px;
+  height: 300px;
   width: 100%;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .table-container {
-  max-height: 150px;
+  max-height: 200px;
   overflow-x: auto;
   overflow-y: auto;
 }
@@ -124,7 +124,7 @@
 
 .orders-table th,
 .orders-table td {
-  padding: 0.75rem;
+  padding: 0.5rem;
   text-align: left;
   border-bottom: 1px solid #eee;
 }
@@ -135,7 +135,11 @@
   font-weight: 600;
 }
 
-.orders-table tbody tr:hover {
+.orders-table tr {
+  height: 30px;
+}
+
+.orders-table tr:hover {
   background: #f8f9fa;
 }
 
