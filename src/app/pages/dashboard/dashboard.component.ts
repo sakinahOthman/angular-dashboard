@@ -22,10 +22,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   sidebarOpen = false;
+  isLoading = true;
 
   dataSource!: MatTableDataSource<any>;
 
   displayedColumns: string[] = ['id', 'customer', 'date', 'amount', 'status'];
+
+  selectedPeriod = 'all';
+  selectedCategory = 'all';
 
   username = '';
   password = '';
@@ -34,7 +38,22 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.latestOrders);
+    this.dataSource = new MatTableDataSource<any>([]);
+    this.isLoading = true;
+
+    setTimeout(() => {
+      
+      this.dataSource.data = this.latestOrders;
+      this.isLoading = false;
+
+      // Re-apply paginator/sort in case ViewChild is ready
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      }
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      }
+    }, 1200);
   }
 
   toggleSidebar() {
@@ -46,7 +65,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     new Chart(this.chartCanvas.nativeElement, {
       type: 'line',
       data: this.lineChartData,
-      options: this.lineChartOptions
+      options: this.lineChartOptions,
     });
 
     // Pie Chart
@@ -91,6 +110,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   public lineChartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,
@@ -123,6 +143,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   public pieChartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,

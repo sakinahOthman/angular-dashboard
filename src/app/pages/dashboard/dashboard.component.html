@@ -1,12 +1,34 @@
 <app-topbar (toggleSidebar)="toggleSidebar()"></app-topbar>
 
+
 <div class="dashboard-layout">
   <app-sidebar *ngIf="sidebarOpen"></app-sidebar>
   <div class="dashboard-content">
 
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <h3>Total Revenue</h3>
+    <div *ngIf="isLoading" class="dashboard-loading">
+      <div class="loader"></div>
+      <p>Loading dashboard data...</p>
+    </div>
+
+    <ng-container>
+      <div class="data-filtering">
+        <label for="period">Period:</label>
+        <select id="period" [(ngModel)]="selectedPeriod">
+          <option value="all">All Time</option>
+          <option value="lastMonth">Last Month</option>
+          <option value="lastWeek">Last Week</option>
+        </select>
+        <label for="category">Category:</label>
+        <select id="category" [(ngModel)]="selectedCategory">
+          <option value="all">All Categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="clothing">Clothing</option>
+          <option value="accessories">Accessories</option>
+        </select>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h3>Total Revenue</h3>
         <p class="metric-value">$45,230</p>
         <p class="metric-change positive">+12% from last month</p>
       </div>
@@ -94,5 +116,6 @@
       </div>
     </div>
 
+    </ng-container>
   </div>
 </div>
