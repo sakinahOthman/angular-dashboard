@@ -62,8 +62,8 @@
         </div>
         <div class="chart-item">
           <h3>Revenue Distribution</h3>
-          <div class="chart-container pie-chart-container">
-            <canvas #pieChartCanvas></canvas>
+          <div class="chart-container doughnut-chart-container">
+            <canvas #doughnutChartCanvas></canvas>
           </div>
         </div>
       </div>
@@ -75,6 +75,16 @@
 
     <div class="orders-section">
       <h3>Latest Orders</h3>
+      <div class="table-filters">
+        <input type="text" placeholder="Search orders..." [(ngModel)]="searchTerm" (input)="applyFilter()">
+        <select [(ngModel)]="statusFilter" (change)="applyFilter()">
+          <option value="">All Statuses</option>
+          <option value="completed">Completed</option>
+          <option value="processing">Processing</option>
+          <option value="shipped">Shipped</option>
+          <option value="pending">Pending</option>
+        </select>
+      </div>
       <div class="table-container">
         <table mat-table [dataSource]="dataSource" matSort class="orders-table">
           <ng-container matColumnDef="id">

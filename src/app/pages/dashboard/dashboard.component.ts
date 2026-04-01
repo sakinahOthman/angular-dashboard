@@ -17,7 +17,7 @@ import { MatSortModule, MatSort } from '@angular/material/sort';
 })
 export class DashboardComponent implements AfterViewInit, OnInit {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef;
-  @ViewChild('pieChartCanvas') pieChartCanvas!: ElementRef;
+  @ViewChild('doughnutChartCanvas') doughnutChartCanvas!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -30,6 +30,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   selectedPeriod = 'all';
   selectedCategory = 'all';
+
+  searchTerm = '';
+  statusFilter = '';
 
   username = '';
   password = '';
@@ -44,6 +47,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     setTimeout(() => {
       
       this.dataSource.data = this.latestOrders;
+      this.applyFilter();
       this.isLoading = false;
 
       // Re-apply paginator/sort in case ViewChild is ready
@@ -60,6 +64,18 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     this.sidebarOpen = !this.sidebarOpen;
   }
 
+  applyFilter() {
+    const filteredOrders = this.latestOrders.filter(order => {
+      const matchesSearch = !this.searchTerm ||
+        order.customer.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        order.product.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        order.id.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const matchesStatus = !this.statusFilter || order.status.toLowerCase() === this.statusFilter.toLowerCase();
+      return matchesSearch && matchesStatus;
+    });
+    this.dataSource.data = filteredOrders;
+  }
+
   ngAfterViewInit() {
     // Line Chart
     new Chart(this.chartCanvas.nativeElement, {
@@ -68,11 +84,11 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       options: this.lineChartOptions,
     });
 
-    // Pie Chart
-    new Chart(this.pieChartCanvas.nativeElement, {
-      type: 'pie',
-      data: this.pieChartData,
-      options: this.pieChartOptions
+    // Doughnut Chart
+    new Chart(this.doughnutChartCanvas.nativeElement, {
+      type: 'doughnut',
+      data: this.doughnutChartData,
+      options: this.doughnutChartOptions
     });
 
     // Set up table pagination and sorting
@@ -131,8 +147,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }
   };
 
-  // Pie Chart Data
-  public pieChartData = {
+  // Doughnut Chart Data
+  public doughnutChartData = {
     labels: ['Electronics', 'Clothing', 'Accessories', 'Other'],
     datasets: [
       {
@@ -141,7 +157,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     ]
   };
 
-  public pieChartOptions: any = {
+  public doughnutChartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
